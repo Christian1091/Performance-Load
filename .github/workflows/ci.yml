@@ -17,7 +17,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Set up K6
-        uses: grafana/k6-action@v2
+        uses: grafana/k6-action@v1
         with:
           version: 'latest' 
 
@@ -28,7 +28,7 @@ jobs:
           k6 run load.js
 
       - name: Upload K6 report
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: loadReport
           path: ./reports/loadReport.html
