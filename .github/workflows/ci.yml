@@ -20,22 +20,7 @@ jobs:
         uses: docker/setup-buildx-action@v2
 
       - name: Run K6
-        env:
-          K6_WEB_DASHBOARD_EXPORT: /scripts/reports/loadReport.html
-        run: |
-          mkdir -p ./reports
+        run:
           docker run -v $(pwd):/scripts -i grafana/k6 run /scripts/tests/load.js
 
-      - name: Ver loadReport si se creo en el repo
-        run: |
-          ls -l ./reports
-
-      - name: Verificar permisos
-        run: |
-          ls -l ./reports
-
-      - name: Upload K6 report
-        uses: actions/upload-artifact@v4
-        with:
-          name: loadReport
-          path: ./reports/loadReport.html
+  
