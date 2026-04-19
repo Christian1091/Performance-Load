@@ -8,7 +8,7 @@ Antes de comenzar, asegúrate de tener configurado lo siguiente en la máquina l
 
 - **Sistema operativo**: Windows 11
 - **IDE**: [Visual Studio Code](https://code.visualstudio.com/)
-- **k6**: Versión v1.7.0 (asegúrate de tenerlo configurado correctamente)
+- **k6**: Versión v1.7.0
 
 ### Verificación de la versión de k6 instalada
 
@@ -36,7 +36,8 @@ cd Performance-Load
 ```
 
 **2.2 Instalar dependencias del proyecto**
-Si no tienes k6 instalado, sigue el paso mencionado en la sección anterior para instalarlo.
+
+Si no tienes k6 instalado, seguir el paso mencionado en la sección anterior para instalarlo.
 
 ## 3. Instrucciones para ejecutar los tests
 
