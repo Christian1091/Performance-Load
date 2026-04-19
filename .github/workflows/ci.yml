@@ -19,14 +19,14 @@ jobs:
       - name: Set up Docker
         uses: docker/setup-buildx-action@v2
 
-      - name: Run K6 tests and export the dashboard
+      - name: Run K6
         env:
-          K6_WEB_DASHBOARD_EXPORT: ./reports/loadReport.html
+          K6_WEB_DASHBOARD_EXPORT: /scripts/reports/loadReport.html
         run: |
           mkdir -p ./reports
           docker run -v $(pwd):/scripts -i grafana/k6 run /scripts/tests/load.js
 
-      - name: Upload K6 report as artifact
+      - name: Upload K6 report
         uses: actions/upload-artifact@v4
         with:
           name: loadReport
