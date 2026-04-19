@@ -1,0 +1,52 @@
+Conclusiones - Hallazgos 
+
+Prueba Performance Carga
+
+Hallazgos
+
+- La creación del proyecto y la configuración de las pruebas de performance con k6 se llevaron a cabo de manera satisfactoria, no se tuvo 
+inconvenientes durante la instalación ni la configuración inicial, lo que permitió iniciar las pruebas de manera fluida.
+
+- Durante la ejecución de las pruebas, los scripts diseñados funcionaron como se esperaba, y las pruebas de rendimiento se realizaron sin 
+errores mayores. La herramienta k6 demostró ser eficaz para simular las cargas de trabajo definidas, ejecutando las peticiones a la API según 
+lo planeado.
+
+- Se tuvo un inconveniente. el cual surgió con la generación del reporte, ya que el comando inicialmente utilizado para exportar los resultados 
+no funcionó correctamente que es set K6_WEB_DASHBOARD=true && set K6_WEB_DASHBOARD_EXPORT=.\loadReport.html && k6 run tests\load.js, 
+la herramienta no reconocía el comando para generar el archivo de reporte en el formato esperado. Este error fue identificado y solucionado 
+al añadir el siguiente comando alternativo: k6 run --out web-dashboard, esta modificación permitió la visualización en tiempo real de los 
+resultados de las pruebas, facilitando el monitoreo durante la ejecución.
+
+- Con el comando --out web-dashboard, se puede visualizar el progreso de las pruebas de rendimiento en tiempo real a través de un dashboard 
+accesible en la URL por defecto: http://127.0.0.1:5665. Esto proporcionó una visión clara de las métricas clave, como el rendimiento de las 
+respuestas, el tiempo de latencia y el número de peticiones realizadas.
+
+- Para realizar las pruebas de carga con datos realistas, se utilizó un archivo CSV con los datos proporcionado en el documento adjunto para 
+alimentar la prueba, este enfoque permitió simular escenarios más cercanos a la realidad, ya que los datos de entrada pueden variar de acuerdo
+con los requerimientos del sistema, lo que aumentó la relevancia y precisión de las pruebas de rendimiento.
+
+- Durante las pruebas de rendimiento, se monitorearon diversas métricas clave, para evaluar el comportamiento de la aplicación bajo condiciones
+de carga. El escenario de prueba se diseñó para alcanzar al menos 20 TPS, con las siguientes validaciones específicas:
+    * Tiempo de respuesta: El tiempo máximo permitido por solicitud es de 1,5 segundos.
+    * Tasa de error: La tasa de error aceptable debe ser menor al 3% del total de las peticiones.
+
+- Estas métricas permitieron obtener una visión clara del rendimiento de la aplicación y su capacidad para manejar la carga esperada, 
+asegurando que cumpla con los estándares de calidad y eficiencia.
+
+Conclusiones
+
+Luego de resolver el ejercicio utilizando las herramientas y frameworks solicitados, puedo concluir que la implementación de las pruebas de 
+rendimiento con k6 se llevó a cabo con éxito. Logré simular escenarios de carga de manera efectiva y obtuve datos relevantes para la 
+evaluación del rendimiento de la API. A pesar de un pequeño inconveniente con la generación de los reportes, el uso del Web Dashboard 
+permitió realizar un monitoreo en tiempo real y analizar los resultados de manera eficiente.
+
+En cuanto a los resultados obtenidos, el escenario de la prueba cumplió con los requisitos establecidos. Se alcanzaron un total de 
+20 transacciones por segundo (TPS), con las siguientes validaciones:
+- Tiempo de respuesta: El tiempo de respuesta promedio fue de 341.53 ms, lo que está por debajo del límite máximo permitido de 1,5 segundos. 
+El percentil 95 de las respuestas fue de 363.02 ms, cumpliendo ampliamente con el requisito de un máximo de 1,5 segundos.
+- Tasa de error: La tasa de error fue del 0.00%, es decir, no hubo fallos en las 2394 peticiones realizadas, lo que está muy por debajo del 
+umbral de error aceptable del 3%.
+
+La visualización en tiempo real de las métricas de rendimiento es de una ventaja significativa, ya que permite detectar posibles problemas 
+en el rendimiento de manera inmediata, como cuellos de botella o tiempos de respuesta inadecuados, y de esta manera permite tomar decisiones
+informadas y ajustar la configuración de las pruebas durante su ejecución.
