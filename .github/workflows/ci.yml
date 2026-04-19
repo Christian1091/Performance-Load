@@ -1,0 +1,34 @@
+name: K6 Performance Load
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  k6-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+
+      - name: Set up K6
+        uses: grafana/k6-action@v2
+        with:
+          version: 'latest' 
+
+      - name: Run K6
+        env:
+          K6_WEB_DASHBOARD_EXPORT: ./loadReport.html
+        run: |
+          k6 run load.js
+
+      - name: Upload K6 report
+        uses: actions/upload-artifact@v2
+        with:
+          name: loadReport
+          path: ./reports/loadReport.html
