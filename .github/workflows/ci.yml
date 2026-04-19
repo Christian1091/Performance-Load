@@ -26,6 +26,14 @@ jobs:
           mkdir -p ./reports
           docker run -v $(pwd):/scripts -i grafana/k6 run /scripts/tests/load.js
 
+      - name: Ver loadReport si se creo en el repo
+        run: |
+          ls -l ./reports
+
+      - name: Verificar permisos
+        run: |
+          ls -l ./reports
+
       - name: Upload K6 report
         uses: actions/upload-artifact@v4
         with:
