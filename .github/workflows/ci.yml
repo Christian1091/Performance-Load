@@ -27,7 +27,7 @@ jobs:
           docker run -v $(pwd):/scripts -i grafana/k6 run /scripts/test.js
 
       - name: Upload K6 report as artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: loadReport
           path: ./reports/loadReport.html
